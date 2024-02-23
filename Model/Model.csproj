@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="App\Calculator\Command\" />
+    <Folder Include="App\Calculator\DTO\" />
+    <Folder Include="App\Calculator\Queries\" />
+    <Folder Include="Domain\CalculateHistory\" />
+    <Folder Include="Domain\MathmaticalFormula\" />
+  </ItemGroup>
+
+</Project>
