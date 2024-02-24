@@ -89,5 +89,7 @@ public partial class Calculator : MaterialForm
         // =
         ButtonEaual.Command = viewModel.InputEqualCommand;
         ButtonEaual.CommandParameter = ButtonEaual.Text;
+
+        // TODO êiÇﬁÅEñﬂÇÈé¿ëï
     }
 }

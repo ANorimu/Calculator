@@ -189,6 +189,7 @@ internal partial class CalculatorViewModel : ObservableObject
 
         logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
     }
+    /// <param name="inputSign"></param>
     [RelayCommand]
     private void InputSign(string inputSign)
     {
@@ -199,6 +200,7 @@ internal partial class CalculatorViewModel : ObservableObject
         if (0 < MainDisplayText.Length && MainDisplayText[^1] == '.')
             MainDisplayText = MainDisplayText.Replace(Period, string.Empty);
 
+        // TODO 記号連打すると正常に計算が行われないバグ
         sign = inputSign;
         switch (mode)
         {
@@ -218,6 +220,7 @@ internal partial class CalculatorViewModel : ObservableObject
                 Calculate();
                 break;
             case Mode.Sign:
+                // 記号
                 if (rightNum.HasValue)
                 {
                     rightNum = result;
