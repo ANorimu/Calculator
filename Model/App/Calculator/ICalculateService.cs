@@ -1,9 +1,9 @@
-﻿using Model.App.Calculator.DTO;
+﻿using Model.App.Calculator.Command;
 
 namespace Model.App.Calculator
 {
     public interface ICalculateService
     {
-        CalculateHistory Calculate();
+        CalculateResponse Calculate(CalculateRequest request);
     }
 }

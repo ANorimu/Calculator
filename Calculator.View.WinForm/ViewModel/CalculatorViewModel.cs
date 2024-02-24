@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using log4net;
 using Microsoft.Extensions.DependencyInjection;
 using Model.App.Calculator;
+using Model.App.Calculator.Command;
 
 namespace Calculator.View.WinForm.ViewModel;
 
@@ -26,8 +27,8 @@ internal partial class CalculatorViewModel : ObservableObject
     private Mode mode = Mode.Input;
     private const decimal initValue = decimal.Zero;
     private decimal inputNumber = initValue;
-    private decimal? leftNum = null;
-    private decimal rightNum = initValue;
+    private decimal leftNum = initValue;
+    private decimal? rightNum = null;
     private decimal? result = null;
     private string? sign = null;
 
@@ -81,9 +82,9 @@ internal partial class CalculatorViewModel : ObservableObject
     {
         logger.InfoFormat(LogOperation, Label);
 
-        inputNumber = 0;
-        leftNum = null;
-        rightNum = 0;
+        inputNumber = decimal.Zero;
+        leftNum = decimal.Zero;
+        rightNum = null;
         MainDisplayText = InitText;
         SubDisplayText = string.Empty;
 
@@ -95,7 +96,7 @@ internal partial class CalculatorViewModel : ObservableObject
         logger.InfoFormat(LogOperation, Label);
 
         inputNumber = 0;
-        rightNum = 0;
+        rightNum = null;
         MainDisplayText = InitText;
 
         mode = Mode.Input;
@@ -189,7 +190,7 @@ internal partial class CalculatorViewModel : ObservableObject
                 Calculate();
                 break;
             case Mode.Calculated:
-                leftNum = result;
+                leftNum = result ?? decimal.Zero;
                 rightNum = inputNumber;
                 Calculate();
                 break;
@@ -207,10 +208,28 @@ internal partial class CalculatorViewModel : ObservableObject
 
         mode = Mode.Calculated;
     }
+    /// <summary>
+    /// 計算実行＆結果を反映
+    /// </summary>
+    /// <exception cref="NotImplementedException"></exception>
     private void Calculate()
     {
-        // TODO 計算実行＆結果を反映
-        var calculateHistory = service.Calculate();
+        var reqSign = CalculateRequest.OperatorSign.None;
+        if (sign == null)
+            reqSign = sign switch
+            {
+                "+" => CalculateRequest.OperatorSign.Plus,
+                "-" => CalculateRequest.OperatorSign.Minus,
+                "×" => CalculateRequest.OperatorSign.Multiply,
+                "÷" => CalculateRequest.OperatorSign.Devide,
+                _ => throw new NotImplementedException(),
+            };
+        var calculateHistory = service.Calculate(new CalculateRequest
+        {
+            LeftNumber = leftNum,
+            RightNumber = rightNum,
+            Sign = reqSign
+        });
         result = calculateHistory.Result;
         SubDisplayText = calculateHistory.Formula;
         MainDisplayText = result == null ?

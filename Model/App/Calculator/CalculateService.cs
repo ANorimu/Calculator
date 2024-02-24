@@ -1,29 +1,45 @@
-﻿using Model.App.Calculator.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Model.App.Calculator.Command;
+using Model.Domain.CalculateHistory;
+using Model.Domain.MathmaticalFormula;
 
-namespace Model.App.Calculator
+namespace Model.App.Calculator;
+
+public class CalculateService : ICalculateService
 {
-    public class CalculateService : ICalculateService
+    public CalculateResponse Calculate(CalculateRequest command)
     {
-        public CalculateHistory Calculate()
+        Operand num1 = new(command.LeftNumber);
+        Operand? num2 = command.RightNumber == null ? null : new Operand(command.RightNumber.Value);
+        Formula formula = command.Sign switch
         {
-            // TODO 計算処理
-            return new CalculateHistory
-            {
-                ID = 0,
-                At = DateTime.Now,
-                LeftNumber = 1,
-                RightNumber = 2,
-                Result = 3,
-                Sign = "+",
-                Formula = "1 + 2 ="
-            };
+            CalculateRequest.OperatorSign.Plus => new FormulaPlus(num1, num2),
+            CalculateRequest.OperatorSign.Minus => new FormulaMinus(num1, num2),
+            CalculateRequest.OperatorSign.Multiply => new FormulaMultiply(num1, num2),
+            CalculateRequest.OperatorSign.Devide => new FormulaDevide(num1, num2),
+            CalculateRequest.OperatorSign.None => new FormulaNone(num1),
+            _ => throw new NotImplementedException(),
+        };
 
-            // TODO DB保存処理
-        }
+        // 計算処理
+        var history = new CalculateHistory
+        {
+            At = DateTime.Now,
+            Formula = formula,
+            Result = formula.Calculate()
+        };
+
+        // TODO DB保存処理
+
+
+        return new CalculateResponse
+        {
+            ID = 0,
+            At = history.At.Value,
+            LeftNumber = history.Formula.LeftOperand.Value,
+            RightNumber = history.Formula?.RightOperand?.Value,
+            Result = history.Result?.Value,
+            Sign = command.Sign,
+            Formula = history.Formula == null ? "" : history.Formula.ToString()
+        };
     }
 }
