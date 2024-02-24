@@ -21,11 +21,12 @@ public class CalculateService : ICalculateService
         };
 
         // 計算処理
+        var res = formula.Calculate();
         var history = new CalculateHistory
         {
             At = DateTime.Now,
             Formula = formula,
-            Result = formula.Calculate()
+            Result = res
         };
 
         // TODO DB保存処理

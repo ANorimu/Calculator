@@ -27,7 +27,7 @@ internal partial class CalculatorViewModel : ObservableObject
     private Mode mode = Mode.Input;
     private const decimal initValue = decimal.Zero;
     private decimal inputNumber = initValue;
-    private decimal leftNum = initValue;
+    private decimal? leftNum = null;
     private decimal? rightNum = null;
     private decimal? result = null;
     private string? sign = null;
@@ -81,31 +81,38 @@ internal partial class CalculatorViewModel : ObservableObject
     private void Clear(string Label)
     {
         logger.InfoFormat(LogOperation, Label);
+        logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
 
         inputNumber = decimal.Zero;
-        leftNum = decimal.Zero;
+        leftNum = null;
         rightNum = null;
         MainDisplayText = InitText;
         SubDisplayText = string.Empty;
 
         mode = Mode.Input;
+
+        logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
     }
     [RelayCommand]
     private void ClearEntry(string Label)
     {
         logger.InfoFormat(LogOperation, Label);
+        logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
 
         inputNumber = 0;
         rightNum = null;
         MainDisplayText = InitText;
 
         mode = Mode.Input;
+
+        logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
     }
     [RelayCommand]
     private void InputNumber(string inputNum)
     {
         logger.InfoFormat(LogOperation, inputNum);
-        
+        logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
+
         switch (mode)
         {
             case Mode.Input:
@@ -124,6 +131,8 @@ internal partial class CalculatorViewModel : ObservableObject
                 MainDisplayText += inputNum;
                 break;
             case Mode.Calculated:
+                leftNum = null;
+                rightNum = null;
                 SubDisplayText = string.Empty;
                 MainDisplayText = string.Empty;
                 MainDisplayText += inputNum;
@@ -136,11 +145,14 @@ internal partial class CalculatorViewModel : ObservableObject
         }
         inputNumber = tmp;
         mode = Mode.Input;
+
+        logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
     }
     [RelayCommand]
     private void AppendPeriod()
     {
         logger.InfoFormat(LogOperation, Period);
+        logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
 
         if (MainDisplayText.Contains(Period))
             return;
@@ -159,11 +171,14 @@ internal partial class CalculatorViewModel : ObservableObject
                 break;
         }
         mode = Mode.Input;
+
+        logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
     }
     [RelayCommand]
     private void ChangePlusMinus(string inputSign)
     {
         logger.InfoFormat(LogOperation, inputSign);
+        logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
 
         inputNumber *= -1;
         MainDisplayText = inputNumber < 0 ?
@@ -171,51 +186,73 @@ internal partial class CalculatorViewModel : ObservableObject
             MainDisplayText.Replace("-", "");
 
         mode = Mode.Input;
+
+        logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
     }
     [RelayCommand]
     private void InputSign(string inputSign)
     {
         logger.InfoFormat(LogOperation, inputSign);
+        logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
 
         // 末尾の「.」除去
-        if (MainDisplayText[^1] == '.')
+        if (0 < MainDisplayText.Length && MainDisplayText[^1] == '.')
             MainDisplayText = MainDisplayText.Replace(Period, string.Empty);
 
         sign = inputSign;
         switch (mode)
         {
             case Mode.Input:
-                leftNum = inputNumber;
-                rightNum = inputNumber;
-                Calculate();
+                if (!leftNum.HasValue)
+                {
+                    leftNum = inputNumber;
+                    Calculate();
+                }
+                else
+                {
+                    rightNum = inputNumber;
+                }
                 break;
             case Mode.Calculated:
-                leftNum = result ?? decimal.Zero;
                 rightNum = inputNumber;
                 Calculate();
                 break;
             case Mode.Sign:
+                if (rightNum.HasValue)
+                {
+                    rightNum = result;
+                }
+                else
+                {
+                    leftNum = result;
+                    Calculate();
+                }
                 break;
         }
         mode = Mode.Sign;
+
+        logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
     }
     [RelayCommand]
     private void InputEqual()
     {
         logger.InfoFormat(LogOperation, "=");
+        logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
+
+        if (leftNum == null) leftNum = inputNumber;
+        else if (rightNum == null) rightNum = inputNumber;
 
         Calculate();
 
         mode = Mode.Calculated;
+
+        logger.Debug($"mode:{mode},inputNumber:{inputNumber},leftNum:{leftNum},rightNum:{rightNum},result:{result},sign:{sign}");
     }
-    /// <summary>
-    /// 計算実行＆結果を反映
-    /// </summary>
-    /// <exception cref="NotImplementedException"></exception>
     private void Calculate()
     {
+        // 計算
         var reqSign = CalculateRequest.OperatorSign.None;
-        if (sign == null)
+        if (sign != null)
             reqSign = sign switch
             {
                 "+" => CalculateRequest.OperatorSign.Plus,
@@ -226,14 +263,21 @@ internal partial class CalculatorViewModel : ObservableObject
             };
         var calculateHistory = service.Calculate(new CalculateRequest
         {
-            LeftNumber = leftNum,
+            LeftNumber = leftNum ?? decimal.Zero,
             RightNumber = rightNum,
             Sign = reqSign
         });
+        logger.Debug($"計算結果:{calculateHistory.Result}");
+
+        // 結果を表示
         result = calculateHistory.Result;
+        if (result.HasValue)
+        {
+            inputNumber = result.Value;
+            leftNum = result;
+            MainDisplayText = result.Value.ToString("0.#####");
+        }
+
         SubDisplayText = calculateHistory.Formula;
-        MainDisplayText = result == null ?
-            "" :
-            result.Value.ToString("0.#####");
     }
 }

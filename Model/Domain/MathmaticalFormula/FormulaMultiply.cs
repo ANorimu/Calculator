@@ -1,7 +1,7 @@
 ﻿namespace Model.Domain.MathmaticalFormula;
 
 public class FormulaMultiply(Operand leftOperand, Operand? rightOperand)
-    : Formula(leftOperand, rightOperand, new Operator("+"))
+    : Formula(leftOperand, rightOperand, new Operator("×"))
 {
     public override Result? Calculate()
     {
