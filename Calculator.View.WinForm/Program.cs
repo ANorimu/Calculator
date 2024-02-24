@@ -1,3 +1,4 @@
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
 namespace Calculator.View.WinForm
 {
     internal static class Program
