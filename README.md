@@ -1,4 +1,4 @@
-![image](https://github.com/ANorimu/Calculator/assets/15935333/bdea4b27-c79f-4756-a4b4-3963921078e0)# 電卓アプリテストコーディングReadme
+# 電卓アプリテストコーディングReadme
 
 - コーディング工数制限３時間(主要な設計は予め実施しました。)
 
