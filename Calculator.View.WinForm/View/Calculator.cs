@@ -6,7 +6,7 @@ namespace Calculator.View.WinForm;
 
 public partial class Calculator : MaterialForm
 {
-    private CalculatorViewModel viewModel;
+    private readonly CalculatorViewModel viewModel;
 
     public Calculator()
     {
@@ -53,25 +53,25 @@ public partial class Calculator : MaterialForm
         ButtonDelete.Command = viewModel.BackSpaceCommand;
         ButtonDelete.CommandParameter = ButtonDelete.Text;
         // êîéö
-        Button0.Command = viewModel.InputNumberCommand;
+        Button0.Command = viewModel.AppendNumberCommand;
         Button0.CommandParameter = Button0.Text;
-        Button1.Command = viewModel.InputNumberCommand;
+        Button1.Command = viewModel.AppendNumberCommand;
         Button1.CommandParameter = Button1.Text;
-        Button2.Command = viewModel.InputNumberCommand;
+        Button2.Command = viewModel.AppendNumberCommand;
         Button2.CommandParameter = Button2.Text;
-        Button3.Command = viewModel.InputNumberCommand;
+        Button3.Command = viewModel.AppendNumberCommand;
         Button3.CommandParameter = Button3.Text;
-        Button4.Command = viewModel.InputNumberCommand;
+        Button4.Command = viewModel.AppendNumberCommand;
         Button4.CommandParameter = Button4.Text;
-        Button5.Command = viewModel.InputNumberCommand;
+        Button5.Command = viewModel.AppendNumberCommand;
         Button5.CommandParameter = Button5.Text;
-        Button6.Command = viewModel.InputNumberCommand;
+        Button6.Command = viewModel.AppendNumberCommand;
         Button6.CommandParameter = Button6.Text;
-        Button7.Command = viewModel.InputNumberCommand;
+        Button7.Command = viewModel.AppendNumberCommand;
         Button7.CommandParameter = Button7.Text;
-        Button8.Command = viewModel.InputNumberCommand;
+        Button8.Command = viewModel.AppendNumberCommand;
         Button8.CommandParameter = Button8.Text;
-        Button9.Command = viewModel.InputNumberCommand;
+        Button9.Command = viewModel.AppendNumberCommand;
         Button9.CommandParameter = Button9.Text;
         ButtonPeriod.Command = viewModel.AppendPeriodCommand;
         ButtonPeriod.CommandParameter = ButtonPeriod.Text;

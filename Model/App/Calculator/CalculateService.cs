@@ -10,7 +10,7 @@ public class CalculateService : ICalculateService
     {
         Operand num1 = new(command.LeftNumber);
         Operand? num2 = command.RightNumber == null ? null : new Operand(command.RightNumber.Value);
-        Formula formula = command.Sign switch
+        FormulaBase formula = command.Sign switch
         {
             CalculateRequest.OperatorSign.Plus => new FormulaPlus(num1, num2),
             CalculateRequest.OperatorSign.Minus => new FormulaMinus(num1, num2),

@@ -1,6 +1,6 @@
 ﻿namespace Model.Domain.MathmaticalFormula;
 
-public abstract class Formula(
+public abstract class FormulaBase(
     Operand leftOperand, Operand? rightOperand, Operator? ope) : IEntity
 {
     public Operand LeftOperand { get; init; } = leftOperand;

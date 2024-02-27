@@ -1,7 +1,7 @@
 ﻿namespace Model.Domain.MathmaticalFormula;
 
 public class FormulaDevide(Operand leftOperand, Operand? rightOperand)
-    : Formula(leftOperand, rightOperand, new Operator("÷"))
+    : FormulaBase(leftOperand, rightOperand, new Operator("÷"))
 {
     public override Result? Calculate()
     {

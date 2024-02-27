@@ -1,7 +1,7 @@
 ﻿namespace Model.Domain.MathmaticalFormula;
 
 public class FormulaNone(Operand leftOperand)
-    : Formula(leftOperand, null, null)
+    : FormulaBase(leftOperand, null, null)
 {
     public override Result? Calculate()
     {

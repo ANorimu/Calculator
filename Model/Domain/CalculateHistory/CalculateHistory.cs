@@ -5,7 +5,7 @@ namespace Model.Domain.CalculateHistory;
 public class CalculateHistory
 {
     public CalculateHistory() { }
-    public CalculateHistory(CalculateID id, DateTime at, Formula formula)
+    public CalculateHistory(CalculateID id, DateTime at, FormulaBase formula)
     {
         ID = id;
         At = at;
@@ -13,6 +13,6 @@ public class CalculateHistory
     }
     public CalculateID? ID { get; set; }
     public DateTime? At { get; set; }
-    public Formula? Formula { get; set; }
+    public FormulaBase? Formula { get; set; }
     public Result? Result { get; set; }
 }
