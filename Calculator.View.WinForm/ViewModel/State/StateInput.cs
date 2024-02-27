@@ -15,7 +15,7 @@ internal class StateInput(CalculatorViewModel viewModel) : StateBase(viewModel)
             ViewModel.Stack = ViewModel.Stack.Remove(ViewModel.Stack.Length - 1, 1);
 
         if (string.IsNullOrEmpty(ViewModel.Stack))
-            ViewModel.Stack = "0";
+            ViewModel.Stack = CalculatorViewModel.InitText;
     }
     public override void OnInput(string input)
     {
@@ -32,18 +32,15 @@ internal class StateInput(CalculatorViewModel viewModel) : StateBase(viewModel)
 
         if (!ViewModel.LeftNum.HasValue)
         {
-            // 左辺にスタック文字列を数値化して代入
+            // スタック値を左辺に代入
             ViewModel.LeftNum = decimal.Parse(ViewModel.Stack);
 
             // 計算実行
-            var res = ViewModel.Calculate();
-
-            // 式をサブディスプレイに表示
-            ViewModel.SubDisplayText = res.Formula;
+            ViewModel.Calculate();
         }
         else
         {
-            // スタック文字列を数値化して右辺に代入
+            // スタック値を右辺に代入
             ViewModel.RightNum = decimal.Parse(ViewModel.Stack);
 
             // 計算実行
@@ -59,7 +56,7 @@ internal class StateInput(CalculatorViewModel viewModel) : StateBase(viewModel)
 
         if (!ViewModel.LeftNum.HasValue)
         {
-            // 左辺にスタック文字列を数値化して代入
+            // スタック値を左辺に代入
             ViewModel.LeftNum = decimal.Parse(ViewModel.Stack);
 
             // 計算実行
@@ -67,7 +64,7 @@ internal class StateInput(CalculatorViewModel viewModel) : StateBase(viewModel)
         }
         else
         {
-            // 右辺にスタック文字列を数値化して代入
+            // スタック値を右辺に代入
             ViewModel.RightNum = decimal.Parse(ViewModel.Stack);
 
             // 計算実行
