@@ -22,7 +22,7 @@ internal partial class CalculatorViewModel : ObservableObject
     private const string LogEnd = "End Calculater";
     private const string LogOperation = "Pushed [{0}]";
 
-    public decimal? Result { get; set; }  = null;
+    public decimal Result { get; set; }  = decimal.Zero;
     public decimal? LeftNum { get; set; } = null;
     public decimal? RightNum { get; set; } = null;
     public string? Sign { get; set; } = null;
@@ -140,7 +140,7 @@ internal partial class CalculatorViewModel : ObservableObject
     {
         logger.InfoFormat(LogOperation, Period);
 
-        if (MainDisplayText.Contains(Period))
+        if (Stack.Contains(Period))
             return;
 
         state.OnInput(Period);
@@ -208,10 +208,10 @@ internal partial class CalculatorViewModel : ObservableObject
         });
         logger.Debug($"計算:{res.Formula}{res.Result}");
 
-        Result = res.Result;
+        Result = res.Result.HasValue ? res.Result.Value : decimal.Zero;
 
         // メインディスプレイに計算結果を表示
-        MainDisplayText = Result.HasValue ? Result.Value.ToString("0.#####") : string.Empty;
+        MainDisplayText = Result.ToString("0.#####");
 
         // 式をサブディスプレイに表示
         SubDisplayText = res.Formula;

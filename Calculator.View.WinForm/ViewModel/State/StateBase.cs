@@ -27,7 +27,9 @@ internal abstract class StateBase(CalculatorViewModel viewModel) : IState
     }
     public virtual void OnInput(string input)
     {
-        if (ViewModel.Stack == CalculatorViewModel.InitText) ViewModel.Stack = string.Empty;
+        if (ViewModel.Stack == CalculatorViewModel.InitText &&
+            input != CalculatorViewModel.Period)
+            ViewModel.Stack = string.Empty;
         ViewModel.Stack += input;
     }
     public virtual void OnSign(string sign)

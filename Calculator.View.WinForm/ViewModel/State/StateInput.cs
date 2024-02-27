@@ -36,7 +36,10 @@ internal class StateInput(CalculatorViewModel viewModel) : StateBase(viewModel)
             ViewModel.LeftNum = decimal.Parse(ViewModel.Stack);
 
             // 計算実行
-            ViewModel.Calculate();
+            var res = ViewModel.Calculate();
+
+            // 計算結果をスタックに代入
+            ViewModel.Stack = res.Result.HasValue ? res.Result.Value.ToString("0.#####") : CalculatorViewModel.InitText;
         }
         else
         {

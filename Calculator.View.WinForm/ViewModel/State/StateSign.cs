@@ -13,7 +13,7 @@ internal class StateSign(CalculatorViewModel viewModel) : StateBase(viewModel)
         ViewModel.ChangeState(new StateInput(ViewModel));
 
         // スタック値を入力値で上書き
-        ViewModel.Stack = input;
+        //ViewModel.Stack = input;
 
         // メインディスプレイにスタック文字列を表示
         ViewModel.MainDisplayText = ViewModel.Stack;
