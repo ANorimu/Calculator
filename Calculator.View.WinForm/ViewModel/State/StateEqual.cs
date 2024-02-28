@@ -6,6 +6,11 @@
 /// <param name="viewModel"></param>
 internal class StateEqual(CalculatorViewModel viewModel) : StateBase(viewModel)
 {
+    public override void OnPlusMinus()
+    {
+        ViewModel.Stack = ViewModel.MainDisplayText;
+        base.OnPlusMinus();
+    }
     public override void OnInput(string input)
     {
         base.OnInput(input);

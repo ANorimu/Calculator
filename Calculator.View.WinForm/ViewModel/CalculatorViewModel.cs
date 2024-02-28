@@ -76,7 +76,11 @@ internal partial class CalculatorViewModel : ObservableObject
     /// </summary>
     [ObservableProperty]
     private string subDisplayText = string.Empty;
-    
+
+    [RelayCommand]
+    private void KeydownAll() {
+    }
+
     /// <summary>
     /// Del
     /// </summary>
@@ -208,10 +212,16 @@ internal partial class CalculatorViewModel : ObservableObject
         });
         logger.Debug($"計算:{res.Formula}{res.Result}");
 
-        Result = res.Result.HasValue ? res.Result.Value : decimal.Zero;
 
-        // メインディスプレイに計算結果を表示
-        MainDisplayText = Result.ToString("0.#####");
+        if (res.Result.HasValue)
+        {
+            Result = res.Result.Value;
+
+            // メインディスプレイに計算結果を表示
+            MainDisplayText = Result.ToString("0.#####");
+        }
+        else
+            Result = decimal.Zero;
 
         // 式をサブディスプレイに表示
         SubDisplayText = res.Formula;

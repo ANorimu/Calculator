@@ -30,7 +30,7 @@
         {
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             tabPage1 = new TabPage();
-            ButtonEaual = new MaterialSkin.Controls.MaterialButton();
+            ButtonEqual = new MaterialSkin.Controls.MaterialButton();
             ButtonPeriod = new MaterialSkin.Controls.MaterialButton();
             Button0 = new MaterialSkin.Controls.MaterialButton();
             ButtonPlusMinus = new MaterialSkin.Controls.MaterialButton();
@@ -42,12 +42,12 @@
             Button6 = new MaterialSkin.Controls.MaterialButton();
             Button5 = new MaterialSkin.Controls.MaterialButton();
             Button4 = new MaterialSkin.Controls.MaterialButton();
-            ButtonMaltiply = new MaterialSkin.Controls.MaterialButton();
+            ButtonMultiply = new MaterialSkin.Controls.MaterialButton();
             Button9 = new MaterialSkin.Controls.MaterialButton();
             Button8 = new MaterialSkin.Controls.MaterialButton();
             Button7 = new MaterialSkin.Controls.MaterialButton();
-            ButtonDevide = new MaterialSkin.Controls.MaterialButton();
-            ButtonDelete = new MaterialSkin.Controls.MaterialButton();
+            ButtonDivide = new MaterialSkin.Controls.MaterialButton();
+            ButtonBack = new MaterialSkin.Controls.MaterialButton();
             ButtonClear = new MaterialSkin.Controls.MaterialButton();
             LabelSubDisplay = new MaterialSkin.Controls.MaterialLabel();
             TextBoxMainDisplay = new MaterialSkin.Controls.MaterialTextBox2();
@@ -72,7 +72,7 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(ButtonEaual);
+            tabPage1.Controls.Add(ButtonEqual);
             tabPage1.Controls.Add(ButtonPeriod);
             tabPage1.Controls.Add(Button0);
             tabPage1.Controls.Add(ButtonPlusMinus);
@@ -84,12 +84,12 @@
             tabPage1.Controls.Add(Button6);
             tabPage1.Controls.Add(Button5);
             tabPage1.Controls.Add(Button4);
-            tabPage1.Controls.Add(ButtonMaltiply);
+            tabPage1.Controls.Add(ButtonMultiply);
             tabPage1.Controls.Add(Button9);
             tabPage1.Controls.Add(Button8);
             tabPage1.Controls.Add(Button7);
-            tabPage1.Controls.Add(ButtonDevide);
-            tabPage1.Controls.Add(ButtonDelete);
+            tabPage1.Controls.Add(ButtonDivide);
+            tabPage1.Controls.Add(ButtonBack);
             tabPage1.Controls.Add(ButtonClear);
             tabPage1.Controls.Add(LabelSubDisplay);
             tabPage1.Controls.Add(TextBoxMainDisplay);
@@ -104,24 +104,24 @@
             // 
             // ButtonEaual
             // 
-            ButtonEaual.AutoSize = false;
-            ButtonEaual.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ButtonEaual.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            ButtonEaual.Depth = 0;
-            ButtonEaual.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
-            ButtonEaual.HighEmphasis = true;
-            ButtonEaual.Icon = null;
-            ButtonEaual.Location = new Point(332, 515);
-            ButtonEaual.Margin = new Padding(4, 6, 4, 6);
-            ButtonEaual.MouseState = MaterialSkin.MouseState.HOVER;
-            ButtonEaual.Name = "ButtonEaual";
-            ButtonEaual.NoAccentTextColor = Color.Empty;
-            ButtonEaual.Size = new Size(100, 100);
-            ButtonEaual.TabIndex = 22;
-            ButtonEaual.Text = "=";
-            ButtonEaual.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            ButtonEaual.UseAccentColor = true;
-            ButtonEaual.UseVisualStyleBackColor = true;
+            ButtonEqual.AutoSize = false;
+            ButtonEqual.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ButtonEqual.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            ButtonEqual.Depth = 0;
+            ButtonEqual.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
+            ButtonEqual.HighEmphasis = true;
+            ButtonEqual.Icon = null;
+            ButtonEqual.Location = new Point(332, 515);
+            ButtonEqual.Margin = new Padding(4, 6, 4, 6);
+            ButtonEqual.MouseState = MaterialSkin.MouseState.HOVER;
+            ButtonEqual.Name = "ButtonEaual";
+            ButtonEqual.NoAccentTextColor = Color.Empty;
+            ButtonEqual.Size = new Size(100, 100);
+            ButtonEqual.TabIndex = 22;
+            ButtonEqual.Text = "=";
+            ButtonEqual.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            ButtonEqual.UseAccentColor = true;
+            ButtonEqual.UseVisualStyleBackColor = true;
             // 
             // ButtonPeriod
             // 
@@ -356,24 +356,24 @@
             // 
             // ButtonMaltiply
             // 
-            ButtonMaltiply.AutoSize = false;
-            ButtonMaltiply.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ButtonMaltiply.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            ButtonMaltiply.Depth = 0;
-            ButtonMaltiply.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
-            ButtonMaltiply.HighEmphasis = true;
-            ButtonMaltiply.Icon = null;
-            ButtonMaltiply.Location = new Point(332, 193);
-            ButtonMaltiply.Margin = new Padding(4, 6, 4, 6);
-            ButtonMaltiply.MouseState = MaterialSkin.MouseState.HOVER;
-            ButtonMaltiply.Name = "ButtonMaltiply";
-            ButtonMaltiply.NoAccentTextColor = Color.Empty;
-            ButtonMaltiply.Size = new Size(100, 100);
-            ButtonMaltiply.TabIndex = 10;
-            ButtonMaltiply.Text = "×";
-            ButtonMaltiply.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            ButtonMaltiply.UseAccentColor = false;
-            ButtonMaltiply.UseVisualStyleBackColor = true;
+            ButtonMultiply.AutoSize = false;
+            ButtonMultiply.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ButtonMultiply.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            ButtonMultiply.Depth = 0;
+            ButtonMultiply.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
+            ButtonMultiply.HighEmphasis = true;
+            ButtonMultiply.Icon = null;
+            ButtonMultiply.Location = new Point(332, 193);
+            ButtonMultiply.Margin = new Padding(4, 6, 4, 6);
+            ButtonMultiply.MouseState = MaterialSkin.MouseState.HOVER;
+            ButtonMultiply.Name = "ButtonMaltiply";
+            ButtonMultiply.NoAccentTextColor = Color.Empty;
+            ButtonMultiply.Size = new Size(100, 100);
+            ButtonMultiply.TabIndex = 10;
+            ButtonMultiply.Text = "×";
+            ButtonMultiply.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            ButtonMultiply.UseAccentColor = false;
+            ButtonMultiply.UseVisualStyleBackColor = true;
             // 
             // Button9
             // 
@@ -440,45 +440,45 @@
             // 
             // ButtonDevide
             // 
-            ButtonDevide.AutoSize = false;
-            ButtonDevide.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ButtonDevide.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            ButtonDevide.Depth = 0;
-            ButtonDevide.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
-            ButtonDevide.HighEmphasis = true;
-            ButtonDevide.Icon = null;
-            ButtonDevide.Location = new Point(331, 87);
-            ButtonDevide.Margin = new Padding(4, 6, 4, 6);
-            ButtonDevide.MouseState = MaterialSkin.MouseState.HOVER;
-            ButtonDevide.Name = "ButtonDevide";
-            ButtonDevide.NoAccentTextColor = Color.Empty;
-            ButtonDevide.Size = new Size(100, 100);
-            ButtonDevide.TabIndex = 6;
-            ButtonDevide.Text = "÷";
-            ButtonDevide.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            ButtonDevide.UseAccentColor = false;
-            ButtonDevide.UseVisualStyleBackColor = true;
+            ButtonDivide.AutoSize = false;
+            ButtonDivide.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ButtonDivide.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            ButtonDivide.Depth = 0;
+            ButtonDivide.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
+            ButtonDivide.HighEmphasis = true;
+            ButtonDivide.Icon = null;
+            ButtonDivide.Location = new Point(331, 87);
+            ButtonDivide.Margin = new Padding(4, 6, 4, 6);
+            ButtonDivide.MouseState = MaterialSkin.MouseState.HOVER;
+            ButtonDivide.Name = "ButtonDevide";
+            ButtonDivide.NoAccentTextColor = Color.Empty;
+            ButtonDivide.Size = new Size(100, 100);
+            ButtonDivide.TabIndex = 6;
+            ButtonDivide.Text = "÷";
+            ButtonDivide.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            ButtonDivide.UseAccentColor = false;
+            ButtonDivide.UseVisualStyleBackColor = true;
             // 
             // ButtonDelete
             // 
-            ButtonDelete.AutoSize = false;
-            ButtonDelete.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ButtonDelete.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            ButtonDelete.Depth = 0;
-            ButtonDelete.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
-            ButtonDelete.HighEmphasis = true;
-            ButtonDelete.Icon = null;
-            ButtonDelete.Location = new Point(223, 87);
-            ButtonDelete.Margin = new Padding(4, 6, 4, 6);
-            ButtonDelete.MouseState = MaterialSkin.MouseState.HOVER;
-            ButtonDelete.Name = "ButtonDelete";
-            ButtonDelete.NoAccentTextColor = Color.Empty;
-            ButtonDelete.Size = new Size(100, 100);
-            ButtonDelete.TabIndex = 5;
-            ButtonDelete.Text = "Del";
-            ButtonDelete.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            ButtonDelete.UseAccentColor = false;
-            ButtonDelete.UseVisualStyleBackColor = true;
+            ButtonBack.AutoSize = false;
+            ButtonBack.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ButtonBack.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            ButtonBack.Depth = 0;
+            ButtonBack.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
+            ButtonBack.HighEmphasis = true;
+            ButtonBack.Icon = null;
+            ButtonBack.Location = new Point(223, 87);
+            ButtonBack.Margin = new Padding(4, 6, 4, 6);
+            ButtonBack.MouseState = MaterialSkin.MouseState.HOVER;
+            ButtonBack.Name = "ButtonDelete";
+            ButtonBack.NoAccentTextColor = Color.Empty;
+            ButtonBack.Size = new Size(100, 100);
+            ButtonBack.TabIndex = 5;
+            ButtonBack.Text = "Del";
+            ButtonBack.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            ButtonBack.UseAccentColor = false;
+            ButtonBack.UseVisualStyleBackColor = true;
             // 
             // ButtonClear
             // 
@@ -580,6 +580,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(456, 739);
             Controls.Add(materialTabControl1);
+            KeyPreview = true;
             Name = "Calculator";
             Text = "電卓";
             materialTabControl1.ResumeLayout(false);
@@ -599,18 +600,18 @@
         private MaterialSkin.Controls.MaterialButton Button6;
         private MaterialSkin.Controls.MaterialButton Button5;
         private MaterialSkin.Controls.MaterialButton Button4;
-        private MaterialSkin.Controls.MaterialButton ButtonMaltiply;
+        private MaterialSkin.Controls.MaterialButton ButtonMultiply;
         private MaterialSkin.Controls.MaterialButton Button9;
         private MaterialSkin.Controls.MaterialButton Button8;
         private MaterialSkin.Controls.MaterialButton Button7;
-        private MaterialSkin.Controls.MaterialButton ButtonDevide;
-        private MaterialSkin.Controls.MaterialButton ButtonDelete;
+        private MaterialSkin.Controls.MaterialButton ButtonDivide;
+        private MaterialSkin.Controls.MaterialButton ButtonBack;
         private MaterialSkin.Controls.MaterialButton ButtonClear;
         private MaterialSkin.Controls.MaterialButton ButtonPlus;
         private MaterialSkin.Controls.MaterialButton Button3;
         private MaterialSkin.Controls.MaterialButton Button2;
         private MaterialSkin.Controls.MaterialButton Button1;
-        private MaterialSkin.Controls.MaterialButton ButtonEaual;
+        private MaterialSkin.Controls.MaterialButton ButtonEqual;
         private MaterialSkin.Controls.MaterialButton ButtonPeriod;
         private MaterialSkin.Controls.MaterialButton Button0;
         private MaterialSkin.Controls.MaterialButton ButtonPlusMinus;

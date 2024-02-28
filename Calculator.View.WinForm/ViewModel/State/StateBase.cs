@@ -18,11 +18,11 @@ internal abstract class StateBase(CalculatorViewModel viewModel) : IState
         ViewModel.MainDisplayText = ViewModel.Stack;
     }
     public virtual void OnBackSpace() { }
-    public void OnPlusMinus()
+    public virtual void OnPlusMinus()
     {
         ViewModel.Stack = ViewModel.Stack[0] == CalculatorViewModel.Minus.ToCharArray()[0] ?
             ViewModel.Stack.Replace(CalculatorViewModel.Minus, string.Empty) :
-            ViewModel.Stack.Insert(0, "-");
+            ViewModel.Stack.Insert(0, CalculatorViewModel.Minus);
         ViewModel.MainDisplayText = ViewModel.Stack;
     }
     public virtual void OnInput(string input)

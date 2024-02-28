@@ -12,10 +12,12 @@ internal class StateInput(CalculatorViewModel viewModel) : StateBase(viewModel)
         base.OnBackSpace();
 
         if (0 < ViewModel.Stack.Length)
-            ViewModel.Stack = ViewModel.Stack.Remove(ViewModel.Stack.Length - 1, 1);
+            ViewModel.Stack = ViewModel.Stack[..^1];
 
         if (string.IsNullOrEmpty(ViewModel.Stack))
             ViewModel.Stack = CalculatorViewModel.InitText;
+
+        ViewModel.MainDisplayText = ViewModel.Stack;
     }
     public override void OnInput(string input)
     {
@@ -69,6 +71,9 @@ internal class StateInput(CalculatorViewModel viewModel) : StateBase(viewModel)
         {
             // スタック値を右辺に代入
             ViewModel.RightNum = decimal.Parse(ViewModel.Stack);
+
+            // スタック値をクリア
+            ViewModel.Stack = CalculatorViewModel.InitText;
 
             // 計算実行
             var res = ViewModel.Calculate();

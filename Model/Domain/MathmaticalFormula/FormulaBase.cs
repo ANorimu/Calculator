@@ -10,6 +10,7 @@ public abstract class FormulaBase(
     public override string ToString()
     {
         if (RightOperand == null) return $"{LeftOperand} {Operator}";
-        return $"{LeftOperand} {Operator} {RightOperand} =";
+        var rightText = RightOperand.Value < decimal.Zero ? "(" + RightOperand + ")" : RightOperand.ToString();
+        return $"{LeftOperand} {Operator} {rightText} =";
     }
 }

@@ -1,6 +1,7 @@
 using Calculator.View.WinForm.ViewModel;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using System.Windows.Forms;
 
 namespace Calculator.View.WinForm;
 
@@ -50,8 +51,8 @@ public partial class Calculator : MaterialForm
         ButtonClearEntry.CommandParameter = ButtonClearEntry.Text;
         ButtonClear.Command = viewModel.ClearCommand;
         ButtonClear.CommandParameter = ButtonClear.Text;
-        ButtonDelete.Command = viewModel.BackSpaceCommand;
-        ButtonDelete.CommandParameter = ButtonDelete.Text;
+        ButtonBack.Command = viewModel.BackSpaceCommand;
+        ButtonBack.CommandParameter = ButtonBack.Text;
         // 数字
         Button0.Command = viewModel.AppendNumberCommand;
         Button0.CommandParameter = Button0.Text;
@@ -78,18 +79,86 @@ public partial class Calculator : MaterialForm
         ButtonPlusMinus.Command = viewModel.ChangePlusMinusCommand;
         ButtonPlusMinus.CommandParameter = ButtonPlusMinus.Text;
         // 演算子
-        ButtonDevide.Command = viewModel.InputSignCommand;
-        ButtonDevide.CommandParameter = ButtonDevide.Text;
-        ButtonMaltiply.Command = viewModel.InputSignCommand;
-        ButtonMaltiply.CommandParameter = ButtonMaltiply.Text;
+        ButtonDivide.Command = viewModel.InputSignCommand;
+        ButtonDivide.CommandParameter = ButtonDivide.Text;
+        ButtonMultiply.Command = viewModel.InputSignCommand;
+        ButtonMultiply.CommandParameter = ButtonMultiply.Text;
         ButtonMinus.Command = viewModel.InputSignCommand;
         ButtonMinus.CommandParameter = ButtonMinus.Text;
         ButtonPlus.Command = viewModel.InputSignCommand;
         ButtonPlus.CommandParameter = ButtonPlus.Text;
         // =
-        ButtonEaual.Command = viewModel.InputEqualCommand;
-        ButtonEaual.CommandParameter = ButtonEaual.Text;
-
+        ButtonEqual.Command = viewModel.InputEqualCommand;
+        ButtonEqual.CommandParameter = ButtonEqual.Text;
+        // キーボード入力
+        KeyDown += new KeyEventHandler(OnKeyDown);
         // TODO 進む・戻る実装
+    }
+    private void OnKeyDown(object? sender, KeyEventArgs e)
+    {
+        switch (e.KeyCode)
+        {
+            case Keys.D0:
+            case Keys.NumPad0:
+                Button0.PerformClick();
+                break;
+            case Keys.D1:
+            case Keys.NumPad1:
+                Button1.PerformClick();
+                break;
+            case Keys.D2:
+            case Keys.NumPad2:
+                Button2.PerformClick();
+                break;
+            case Keys.D3:
+            case Keys.NumPad3:
+                Button3.PerformClick();
+                break;
+            case Keys.D4:
+            case Keys.NumPad4:
+                Button4.PerformClick();
+                break;
+            case Keys.D5:
+            case Keys.NumPad5:
+                Button5.PerformClick();
+                break;
+            case Keys.D6:
+            case Keys.NumPad6:
+                Button6.PerformClick();
+                break;
+            case Keys.D7:
+            case Keys.NumPad7:
+                Button7.PerformClick();
+                break;
+            case Keys.D8:
+            case Keys.NumPad8:
+                Button8.PerformClick();
+                break;
+            case Keys.D9:
+            case Keys.NumPad9:
+                Button9.PerformClick();
+                break;
+            case Keys.Decimal:
+                ButtonPeriod.PerformClick();
+                break;
+            case Keys.Add:
+                ButtonPlus.PerformClick();
+                break;
+            case Keys.Subtract:
+                ButtonMinus.PerformClick();
+                break;
+            case Keys.Multiply:
+                ButtonMultiply.PerformClick();
+                break;
+            case Keys.Divide:
+                ButtonDivide.PerformClick();
+                break;
+            case Keys.Enter:
+                ButtonEqual.PerformClick();
+                break;
+            case Keys.Back:
+                ButtonBack.PerformClick();
+                break;
+        }
     }
 }
