@@ -1,4 +1,4 @@
-﻿namespace Calculator.View.WinForm.ViewModel.State.State;
+﻿namespace Calculator.View.WinForm.ViewModel.State;
 
 /// <summary>
 /// 演算子入力後の状態
@@ -17,8 +17,11 @@ internal class StateSign(CalculatorViewModel viewModel) : StateBase(viewModel)
 
         ViewModel.ChangeState(new StateInput(ViewModel));
 
-        // スタック値を入力値で上書き
-        //ViewModel.Stack = input;
+        if (ViewModel.RightNum.HasValue)
+        {
+            // スタック値を入力値で上書き
+            ViewModel.Stack = input;
+        }
 
         // メインディスプレイにスタック文字列を表示
         ViewModel.MainDisplayText = ViewModel.Stack;

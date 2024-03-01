@@ -1,4 +1,4 @@
-﻿namespace Calculator.View.WinForm.ViewModel.State.State;
+﻿namespace Calculator.View.WinForm.ViewModel.State;
 
 internal abstract class StateBase(CalculatorViewModel viewModel) : IState
 {
@@ -20,6 +20,8 @@ internal abstract class StateBase(CalculatorViewModel viewModel) : IState
     public virtual void OnBackSpace() { }
     public virtual void OnPlusMinus()
     {
+        ViewModel.ChangeState(new StatePlusMinus(ViewModel));
+
         ViewModel.Stack = ViewModel.Stack[0] == CalculatorViewModel.Minus.ToCharArray()[0] ?
             ViewModel.Stack.Replace(CalculatorViewModel.Minus, string.Empty) :
             ViewModel.Stack.Insert(0, CalculatorViewModel.Minus);

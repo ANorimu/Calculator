@@ -1,6 +1,5 @@
 ﻿using Calculator.View.WinForm.Configuration;
 using Calculator.View.WinForm.ViewModel.State;
-using Calculator.View.WinForm.ViewModel.State.State;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using log4net;

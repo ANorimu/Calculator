@@ -1,4 +1,4 @@
-﻿namespace Calculator.View.WinForm.ViewModel.State.State;
+﻿namespace Calculator.View.WinForm.ViewModel.State;
 
 /// <summary>
 /// 値入力後の状態
