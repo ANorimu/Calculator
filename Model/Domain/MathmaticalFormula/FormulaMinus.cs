@@ -1,4 +1,4 @@
-﻿namespace Model.Domain.MathmaticalFormula;
+﻿namespace Calculator.Model.Domain.MathmaticalFormula;
 
 public class FormulaMinus(Operand leftOperand, Operand? rightOperand)
     : FormulaBase(leftOperand, rightOperand, new Operator("-"))

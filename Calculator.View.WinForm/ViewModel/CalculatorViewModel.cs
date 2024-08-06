@@ -1,11 +1,11 @@
-﻿using Calculator.View.WinForm.Configuration;
+﻿using Calculator.Model.App.Calculate;
+using Calculator.Model.App.Calculate.Command;
+using Calculator.View.WinForm.Configuration;
 using Calculator.View.WinForm.ViewModel.State;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using log4net;
 using Microsoft.Extensions.DependencyInjection;
-using Model.App.Calculator;
-using Model.App.Calculator.Command;
 
 namespace Calculator.View.WinForm.ViewModel;
 

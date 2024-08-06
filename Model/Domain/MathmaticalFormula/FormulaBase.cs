@@ -1,4 +1,4 @@
-﻿namespace Model.Domain.MathmaticalFormula;
+﻿namespace Calculator.Model.Domain.MathmaticalFormula;
 
 public abstract class FormulaBase(
     Operand leftOperand, Operand? rightOperand, Operator? ope) : IEntity

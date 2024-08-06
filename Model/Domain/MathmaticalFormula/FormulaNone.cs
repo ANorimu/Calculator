@@ -1,4 +1,4 @@
-﻿namespace Model.Domain.MathmaticalFormula;
+﻿namespace Calculator.Model.Domain.MathmaticalFormula;
 
 public class FormulaNone(Operand leftOperand)
     : FormulaBase(leftOperand, null, null)

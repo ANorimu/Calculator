@@ -1,4 +1,4 @@
-﻿namespace Model.Domain.MathmaticalFormula;
+﻿namespace Calculator.Model.Domain.MathmaticalFormula;
 
 /// <summary>
 /// 被演算子となる数値

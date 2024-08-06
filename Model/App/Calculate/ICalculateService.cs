@@ -1,6 +1,6 @@
-﻿using Model.App.Calculator.Command;
+﻿using Calculator.Model.App.Calculate.Command;
 
-namespace Model.App.Calculator
+namespace Calculator.Model.App.Calculate
 {
     public interface ICalculateService
     {

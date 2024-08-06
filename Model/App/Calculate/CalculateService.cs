@@ -1,11 +1,13 @@
-﻿using Model.App.Calculator.Command;
-using Model.Domain.CalculateHistory;
-using Model.Domain.MathmaticalFormula;
+﻿using Calculator.Model.App.Calculate.Command;
+using Calculator.Model.Domain.CalculateHistory;
+using Calculator.Model.Domain.MathmaticalFormula;
 
-namespace Model.App.Calculator;
+namespace Calculator.Model.App.Calculate;
 
-public class CalculateService : ICalculateService
+public class CalculateService(IUnitOfWork unitOfWork) : ICalculateService
 {
+    private readonly IUnitOfWork UnitOfWork = unitOfWork;
+
     public CalculateResponse Calculate(CalculateRequest command)
     {
         Operand num1 = new(command.LeftNumber);
@@ -29,9 +31,18 @@ public class CalculateService : ICalculateService
             Result = res
         };
 
-        // TODO DB保存処理
-
-
+        // DB保存処理
+        try
+        {
+            UnitOfWork.Begin();
+            UnitOfWork.CalculateHistoryRepository.Save(history);
+            UnitOfWork.Commit();
+        }
+        catch
+        {
+            UnitOfWork.Rollback();
+            // TODO エラー処理
+        }
         return new CalculateResponse
         {
             ID = 0,

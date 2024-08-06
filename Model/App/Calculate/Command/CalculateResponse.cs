@@ -1,6 +1,6 @@
-﻿using static Model.App.Calculator.Command.CalculateRequest;
+﻿using static Calculator.Model.App.Calculate.Command.CalculateRequest;
 
-namespace Model.App.Calculator.Command;
+namespace Calculator.Model.App.Calculate.Command;
 
 public class CalculateResponse
 {

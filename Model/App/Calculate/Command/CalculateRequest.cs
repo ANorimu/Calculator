@@ -1,4 +1,4 @@
-﻿namespace Model.App.Calculator.Command;
+﻿namespace Calculator.Model.App.Calculate.Command;
 
 public class CalculateRequest
 {

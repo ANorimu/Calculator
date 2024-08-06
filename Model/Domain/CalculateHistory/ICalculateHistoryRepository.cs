@@ -1,4 +1,4 @@
-﻿namespace Model.Domain.CalculateHistory;
+﻿namespace Calculator.Model.Domain.CalculateHistory;
 
 public interface ICalculateHistoryRepository
 {

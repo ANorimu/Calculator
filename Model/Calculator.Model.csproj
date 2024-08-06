@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="App\Calculator\DTO\" />
-    <Folder Include="App\Calculator\Queries\" />
-  </ItemGroup>
-
 </Project>

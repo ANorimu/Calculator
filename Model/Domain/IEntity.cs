@@ -1,4 +1,4 @@
-﻿namespace Model.Domain;
+﻿namespace Calculator.Model.Domain;
 
 internal interface IEntity
 {
